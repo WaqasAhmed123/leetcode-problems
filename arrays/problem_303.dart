@@ -10,7 +10,6 @@ class NumArray {
     for (int i = left; i <= right; i++) {
       total += nums[i];
     }
-    print(total);
     return total;
   }
 }
