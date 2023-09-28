@@ -1,29 +1,28 @@
-
 class Solution {
   bool isValid(String s) {
-    bool validParenthesis = false;
+    List<String> parenthesis = [];
     if (s.length.isOdd) {
-      print(false);
       return false;
     }
-    // Queue<String> parenthesis = new Queue<String>();
-    List<String> parenthesis = [];
     for (int i = 0; i < s.length; i++) {
-      if (s[i] == "(" || s[i] == "{" || s[i] == "[")
+      if (s[i] == "(" || s[i] == "{" || s[i] == "[") {
         parenthesis.add(s[i]);
-      else if (s[i] == ")") {
-        parenthesis.remove("(");
-      } else if (s[i] == "}") {
-        parenthesis.remove("{");
-      } else if (s[i] == "]") {
-        parenthesis.remove("[");
+      } else if (s[i] == ")" &&
+          (parenthesis.isEmpty || parenthesis.last != "(")) {
+        return false;
+      } else if (s[i] == "}" &&
+          (parenthesis.isEmpty || parenthesis.last != "{")) {
+        return false;
+      } else if (s[i] == "]" &&
+          (parenthesis.isEmpty || parenthesis.last != "[")) {
+        return false;
+      } else {
+        parenthesis.removeLast();
       }
     }
     if (parenthesis.isEmpty) {
-      print(true);
       return true;
     } else {
-      print(false);
       return false;
     }
   }
@@ -31,8 +30,5 @@ class Solution {
 
 void main() {
   Solution solution = Solution();
-
-  // String result = solution.longestCommonPrefix(["cir", "car"]);
-  bool result = solution.isValid("(]");
-  // String result = solution.longestCommonPrefix(["dog", "racecar", "car"]);
+  bool result = solution.isValid("){");
 }
