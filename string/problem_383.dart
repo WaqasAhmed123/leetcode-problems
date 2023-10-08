@@ -1,12 +1,15 @@
 class Solution {
   bool canConstruct(String ransomNote, String magazine) {
-    if (magazine.contains(ransomNote)) {
-      print(true);
-      return true;
+    for (int i = 0; i < ransomNote.length; i++) {
+      if (magazine.contains(ransomNote[i])) {
+        magazine = magazine.replaceFirst(ransomNote[i], '');
+      } else {
+        return false;
+      }
     }
 
-    print(false);
-    return false;
+    print(true);
+    return true;
   }
 }
 
