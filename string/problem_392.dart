@@ -1,28 +1,44 @@
+
 class Solution {
-  String findTheDifference(String s, String t) {
-    List<String> tList = t.split("");
+  bool isSubsequence(String s, String t) {
+    // List<String> tList = t.split("");
     // List<String> sList = s.split("");
-    // tList.sort();
-    // sList.sort();
+    // if (t.contains(s)) return true;
+    int countT = 0;
+    int countS = 0;
+    for (int i = 0; i < s.length; i++) {
+      // if (i < t.length - 1) {
+        if (t.codeUnits.contains(s.codeUnitAt(i))){
+        countS += s.codeUnitAt(i);
+
+        }
+      countT += t.codeUnitAt(i);
+      }
+    
+
+    // for (int i = 0; i < t.length; i++) {
+    //   // if (!s.codeUnits.contains(t.codeUnitAt(i))) {
+    //   if (!s.contains(t[i])) {
+    //     tList.remove(t[i]);
+    //   } else if (s.isNotEmpty && sList.contains(t[i])) {
+    //     print("executed");
+    //     sList.remove(t[i]);
+    //     tList.remove(t[i]);
+    //   }-
+    // }
+    var finalString = String.fromCharCode(t.codeUnits-s.codeUnits);
+    
+    print(finalString);
+
     // print(tList);
     // print(sList);
-    for (int i = 0; i < s.length; i++) {
-      if (t.contains(s[i])) {
-        if (sList[i] != tList[i]) {
-          print(tList[i]);
-          return tList[i];
-        }
-      } else {
-        print(tList[tList.length - 1]);
-        return tList[tList.length - 1];
-      }
-    }
-    print("0");
-    return "0";
+    // print(tList.join() == s);
+    return tList.join() == s;
   }
 }
 
 void main() {
   Solution solution = Solution();
-  String result = solution.findTheDifference("abcd", "abcde");
+  bool result = solution.isSubsequence("abc", "ahbgdc");
+  // bool result = solution.isSubsequence("ab", "baab");
 }
