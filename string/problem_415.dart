@@ -1,33 +1,34 @@
 class Solution {
   String addStrings(String num1, String num2) {
-    int sum = int.parse(num1) + int.parse(num2);
+    String sum = "";
+    bool isCarry = false;
 
     int maxLength = num1.length > num2.length ? num1.length : num2.length;
     num1 = num1.padLeft(maxLength, '0');
     num2 = num2.padLeft(maxLength, '0');
-    print(maxLength);
+    
+    for (int i = maxLength - 1; i >= 0; i--) {
+      int sumDigits = int.parse(num1[i]) + int.parse(num2[i]) + (isCarry ? 1 : 0);
+      if (sumDigits < 10) {
+        sum = "$sumDigits$sum";
+        isCarry = false;
+      } else {
+        int carryDigit = sumDigits - 10;
+        sum = "${carryDigit}$sum";
+        isCarry = true;
+      }
+    }
+    
+    if (isCarry) {
+      sum = "1$sum";
+    }
+    
     print(sum);
-    print(num1);
-    print(num2);
-    return "";
-    // for (int i = 1; i <= n; i++) {
-    //   if (i % 3 == 0 && i % 5 == 0) {
-    //     answer.add("FizzBuzz");
-    //     continue;
-    //   } else if (i % 3 == 0) {
-    //     answer.add("Fizz");
-    //     continue;
-    //   } else if (i % 5 == 0) {
-    //     answer.add("Buzz");
-    //     continue;
-    //   } else {
-    //     answer.add(i.toString());
-    //   }
-    // }
-    // print(answer);
-    // return answer;
+    return sum;
   }
 }
+
+
 
 void main() {
   Solution solution = Solution();
