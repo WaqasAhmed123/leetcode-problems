@@ -1,23 +1,18 @@
 class Solution {
   bool repeatedSubstringPattern(String s) {
-    for (int i = 0; i <= s.length; i++) {
-      // print(s.substring(0, i + 1));
-      if (!s.substring(i).contains(s.substring(0, i))) {
-        print(s.substring(0, i - 1));
-        print(s.substring(i - 1));
-        // print(i);
-        print("-----");
-        print(s.substring(i - 1).contains(s.substring(0, i - 1)));
-        return (s.substring(i - 1).contains(s.substring(0, i - 1)));
+    int n = s.length;
+    for (int i = n ~/ 2; i >= 1; i--) {
+      if (n % i == 0 && s.substring(0, i) * (n ~/ i) == s) {
+        print(true);
+        return true;
       }
     }
-    // print(false);
+    print(false);
     return false;
   }
 }
 
 void main() {
   Solution solution = Solution();
-  // int result = solution.countSegments("Hello, my name is John");
-  bool result = solution.repeatedSubstringPattern("aba");
+  bool result = solution.repeatedSubstringPattern("abab");
 }
