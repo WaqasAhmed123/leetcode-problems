@@ -10,32 +10,44 @@ class Solution {
         .toList();
 
     List<String> dashList = s.split('').where((char) => char == '-').toList();
-    if (s.length % k == 0) {
-      for (int i = 0; i < s.length; i += k) {
+    if (alphanumericList.length == 1) return alphanumericList[0].toUpperCase();
+
+    else if (alphanumericList.length % k == 0) {
+      for (int i = 0; i < alphanumericList.length; i += k) {
         List<String> sublist = alphanumericList.sublist(i, i + k);
-        formattedKey += sublist.join(" ");
+        formattedKey += sublist.join("");
+        if (i != alphanumericList.length - k) {
+          formattedKey += "-";
+        }
         print("l1");
         print(formattedKey);
       }
     } else {
       alphanumericList
-          .sublist(0, s.length % k)
+          .sublist(0, alphanumericList.length % k)
           .forEach((e) => formattedKey += e);
+      formattedKey += "-";
 
-      for (int i = s.length % k; i < s.length; i += k) {
+      for (int i = alphanumericList.length % k;
+          i < alphanumericList.length;
+          i += k) {
         List<String> sublist = alphanumericList.sublist(i, i + k);
-        formattedKey += sublist.join(" ");
+        formattedKey += sublist.join("");
+        if (i != alphanumericList.length - k) {
+          formattedKey += "-";
+        }
         print("l2");
 
         print(formattedKey);
       }
     }
     print(formattedKey);
-    return "";
+    return formattedKey;
   }
 }
 
 void main() {
   Solution solution = Solution();
-  String result = solution.licenseKeyFormatting("5F3Z-2e-9-w", 4);
+  // String result = solution.licenseKeyFormatting("5F3Z-2e-9-w", 4);
+  String result = solution.licenseKeyFormatting("2-5g-3-J", 2);
 }
