@@ -9,7 +9,6 @@ class Solution {
         .map((char) => char.toLowerCase() == char ? char.toUpperCase() : char)
         .toList();
 
-    List<String> dashList = s.split('').where((char) => char == '-').toList();
     if (alphanumericList.length == 1) return alphanumericList[0].toUpperCase();
 
     else if (alphanumericList.length % k == 0) {
