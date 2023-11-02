@@ -1,5 +1,6 @@
 class Solution {
   String licenseKeyFormatting(String s, int k) {
+    String formattedKey = "";
     List<String> alphanumericList = s
         .split('')
         .where((char) =>
@@ -8,36 +9,28 @@ class Solution {
         .map((char) => char.toLowerCase() == char ? char.toUpperCase() : char)
         .toList();
 
-    // List<String> dashList = s.split('').where((char) => char == '-').toList();
-    // // // List<String> dashList = s.split('').where((char) => char == '-').toList();
-     List<String> dashList = s.split('-').skip(1).toList();
+    List<String> dashList = s.split('').where((char) => char == '-').toList();
+    if (s.length % k == 0) {
+      for (int i = 0; i < s.length; i += k) {
+        List<String> sublist = alphanumericList.sublist(i, i + k);
+        formattedKey += sublist.join(" ");
+        print("l1");
+        print(formattedKey);
+      }
+    } else {
+      alphanumericList
+          .sublist(0, s.length % k)
+          .forEach((e) => formattedKey += e);
 
-    print("Alphanumeric characters: $alphanumericList");
-    print("Dashes: $dashList");
-    //   List<String> alphanumericList = [];
-    //   List<String> dashList = [];
+      for (int i = s.length % k; i < s.length; i += k) {
+        List<String> sublist = alphanumericList.sublist(i, i + k);
+        formattedKey += sublist.join(" ");
+        print("l2");
 
-    // RegExp alphaRegex = RegExp(r'[a-zA-Z]');
-    // RegExp digitRegex = RegExp(r'[0-9]');
-
-    //   for (int i = 0; i < s.length; i++) {
-    //     String char = s[i];
-
-    //     if (alphaRegex.hasMatch(char) || digitRegex.hasMatch(char)) {
-    //       // Convert lowercase alphabets to uppercase
-    //       if (alphaRegex.hasMatch(char)) {
-    //         char = char.toUpperCase();
-    //       }
-    //       alphanumericList.add(char);
-    //     } else if (char == '-') {
-    //       dashList.add(char);
-    //     }
-    //   }
-
-    //   print("Alphanumeric characters: $alphanumericList");
-    //   print("Dashes: $dashList");
-    //   return "";
-    // }
+        print(formattedKey);
+      }
+    }
+    print(formattedKey);
     return "";
   }
 }
