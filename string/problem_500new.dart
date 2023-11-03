@@ -16,8 +16,9 @@ class Solution {
         selectedRow = 2;
       }
 
+      // print("selected row is $selectedRow");
       innerLoop:
-      for (int j = 0; j < words[i].length; j++) {
+      for (int j = 1; j < words[i].length; j++) {
         if (!rowWiseAlphabets[selectedRow!].contains(words[i][j])) {
           print(selectedRow);
           removableWords.add(i);
@@ -26,9 +27,24 @@ class Solution {
         }
       }
     }
+    if (removableWords.isNotEmpty) {
+      // Sort the removableWords list in descending order to avoid index conflicts
+      removableWords.sort((a, b) => b.compareTo(a));
+
+      for (int index in removableWords) {
+        if (index >= 0 && index < words.length) {
+          words.removeAt(index);
+        }
+      }
+    }
+
     // if (removableWords.isNotEmpty) {
-    //   removableWords.map((e) => words.removeAt(e));
+    //   for (int i = 0; i < removableWords.length; i++) {
+    //     // words.removeAt(removableWords[i]);
+    //     words.r
+    //   }
     // }
+    print(removableWords);
     print(words);
     return words;
   }
