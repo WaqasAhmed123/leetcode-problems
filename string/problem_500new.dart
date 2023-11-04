@@ -3,9 +3,6 @@ class Solution {
     List<String> rowWiseAlphabets = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
     int? selectedRow;
     List<int> removableWords = [];
-    // String firstRow = ;
-    // String secondRow = ;
-    // String thirdRow = ;
     for (int i = 0; i < words.length; i++) {
       print(i);
       if (rowWiseAlphabets[0].contains(words[i][0].toLowerCase())) {
@@ -19,16 +16,14 @@ class Solution {
       // print("selected row is $selectedRow");
       innerLoop:
       for (int j = 1; j < words[i].length; j++) {
-        if (!rowWiseAlphabets[selectedRow!].contains(words[i][j])) {
+        if (!rowWiseAlphabets[selectedRow!].contains(words[i][j].toLowerCase())) {
           print(selectedRow);
           removableWords.add(i);
-          // words.remove(words[i]);
           break innerLoop;
         }
       }
     }
     if (removableWords.isNotEmpty) {
-      // Sort the removableWords list in descending order to avoid index conflicts
       removableWords.sort((a, b) => b.compareTo(a));
 
       for (int index in removableWords) {
@@ -37,13 +32,6 @@ class Solution {
         }
       }
     }
-
-    // if (removableWords.isNotEmpty) {
-    //   for (int i = 0; i < removableWords.length; i++) {
-    //     // words.removeAt(removableWords[i]);
-    //     words.r
-    //   }
-    // }
     print(removableWords);
     print(words);
     return words;
@@ -52,5 +40,6 @@ class Solution {
 
 void main() {
   Solution solution = Solution();
-  List<String> result = solution.findWords(["Hello", "Alaska", "Dad", "Peace"]);
+  List<String> result = solution.findWords(["Aasdfghjkl","Qwertyuiop","zZxcvbnm"]);
+  // List<String> result = solution.findWords(["Hello", "Alaska", "Dad", "Peace"]);
 }
