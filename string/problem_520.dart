@@ -10,5 +10,5 @@ class Solution {
 
 void main() {
   Solution solution = Solution();
-  bool result = solution.detectCapitalUse("flaG");
+ bool result = solution.detectCapitalUse("flaG");
 }
