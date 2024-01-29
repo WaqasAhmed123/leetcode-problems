@@ -1,15 +1,20 @@
 class Solution {
   List<List<int>> flipAndInvertImage(List<List<int>> image) {
-    print(image.last);
-    // for (int i = 0; i < image.length; i++) {
-    //   for (int j = 0; j < (image[0].length~/2)-1; j++) {
-    //     if (matrix[i][j] != matrix[i + 1][j + 1]) {
-    //       print(false);
-    //       return false;
-    //     }
-    //   }
-    // }
-    print(true);
+    // print(image[image.length - 1]);
+    for (int i = 0; i < image.length; i++) {
+      for (int j = 0; j < (image[0].length ~/ 2); j++) {
+        // if (matrix[i][j] != matrix[i + 1][j + 1])
+        //  {
+        //   print(false);
+        //   return false;
+        // }
+        print(image[i][j]);
+        int tempt = image[i][j];
+        // image[i][j] = image[i][image[0].length - j + 1];
+        image[i][j] = tempt;
+      }
+    }
+    // print(image);
     return [
       [1, 1, 0],
       [1, 0, 1],
