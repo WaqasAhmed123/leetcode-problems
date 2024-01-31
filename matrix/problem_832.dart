@@ -10,11 +10,12 @@ class Solution {
         // }
         print(image[i][j]);
         int tempt = image[i][j];
-        // image[i][j] = image[i][image[0].length - j + 1];
-        image[i][j] = tempt;
+        image[i][j] = image[i][image[0].length - j - 1];
+        image[i][image[0].length - j - 1] = tempt;
+        //  image[i][image[0].length - j + 1]= tempt;
       }
     }
-    // print(image);
+    print(image);
     return [
       [1, 1, 0],
       [1, 0, 1],
