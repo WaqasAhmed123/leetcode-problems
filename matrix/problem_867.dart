@@ -4,9 +4,9 @@ class Solution {
     for (int i = 0; i < matrix.length; i++) {
       List<int> row = [];
       for (int j = 0; j < matrix[0].length; j++) {
-        // if (i <=j) {
+        if (j <matrix.length) {
           row.add(matrix[j][i]);
-        // }
+        }
       }
       transposedMatrix.add(row);
       print(row);
